@@ -25,7 +25,9 @@ export GOOGLE_CREDENTIALS=${GCP_SERVICE_ACCOUNT_KEY}
 export GOOGLE_PROJECT=${GCP_PROJECT_ID}
 export GOOGLE_REGION=${GCP_REGION}
 
-terraform init pcf-pipelines/install-pcf/gcp/terraform
+# NOTE(craigatgoogle): Modified for staging, using the terraform-staging input instead
+# terraform init pcf-pipelines/install-pcf/gcp/terraform
+terraform init staging-terraform
 
 terraform plan \
   -var "gcp_proj_id=${GCP_PROJECT_ID}" \
@@ -68,7 +70,9 @@ terraform plan \
   -var "db_cloudsqldb_tier=${DB_CLOUDSQLDB_TIER}" \
   -out terraform.tfplan \
   -state terraform-state/terraform.tfstate \
-  pcf-pipelines/install-pcf/gcp/terraform
+  staging-terraform
+# NOTE(craigatgoogle): Modified for staging, using the terraform-staging input instead
+# pcf-pipelines/install-pcf/gcp/terraform
 
 terraform apply \
   -state-out $root/create-infrastructure-output/terraform.tfstate \

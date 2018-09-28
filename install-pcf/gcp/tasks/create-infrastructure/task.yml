@@ -7,6 +7,8 @@ image_resource:
     repository: pcfnorm/rootfs
 
 inputs:
+# NOTE(craigatgoogle): Modified for staging environment.
+- name: staging-terraform
 - name: pcf-pipelines 
 - name: pivnet-opsmgr
 - name: terraform-state

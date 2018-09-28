@@ -13,12 +13,21 @@ resource_types:
     repository: frodenas/gcs-resource
 
 resources:
+# NOTE(craigatgoogle): Modified for staging environment.
 - name: pcf-pipelines
   type: git
   source:
-    uri: git@github.com:pivotal-cf/pcf-pipelines.git
-    branch: master
-    private_key: {{git_private_key}}
+    uri: https://github.com/craigatgoogle/pcf-pipelines.git
+    branch: staging
+
+# NOTE(craigatgoogle): This is required to support the terraform staging configs, as concourse
+# cannot access GOB
+- name: staging-terraform
+  type: gcs
+  source:
+    bucket: {{terraform_staging_bucket}}
+    json_key: {{gcp_service_account_key}}
+    regexp: terraform/(.*).tf
 
 - name: terraform-state
   type: gcs
@@ -99,6 +108,8 @@ jobs:
       file: create-infrastructure-output/*.tfstate
   plan:
   - aggregate:
+    # NOTE(craigatgoogle): Staging TF resource
+    - get: staging-terraform
     - get: terraform-state
     - get: pcf-pipelines
     - get: pivnet-opsmgr

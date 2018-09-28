@@ -161,3 +161,6 @@ routing_tls_termination: load_balancer
 security_acknowledgement: CHANGEME
 
 terraform_statefile_bucket: CHANGEME
+
+# NOTE(craigbarber): This is temporary for staging testing
+terraform_staging_bucket: CHANGEME
