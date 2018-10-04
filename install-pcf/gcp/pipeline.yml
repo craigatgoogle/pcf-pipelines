@@ -27,7 +27,8 @@ resources:
   source:
     bucket: {{terraform_staging_bucket}}
     json_key: {{gcp_service_account_key}}
-    regexp: terraform/(.*).tf
+    regexp: terraform.tgz
+    unpack: true
 
 # NOTE(craigatgoogle): This is required to support the terraform staging binary.
 - name: staging-terraform-docker
