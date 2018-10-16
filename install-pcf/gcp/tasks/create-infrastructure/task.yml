@@ -1,11 +1,10 @@
 ---
 platform: linux
 
-# NOTE(craigatgoogle): Disabled for staging environment.
-# image_resource:
-#   type: docker-image
-#   source:
-#     repository: pcfnorm/rootfs
+image_resource:
+  type: docker-image
+  source:
+    repository: pcfnorm/rootfs
 
 inputs:
 # NOTE(craigatgoogle): Modified for staging environment.

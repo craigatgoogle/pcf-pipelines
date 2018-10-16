@@ -165,7 +165,3 @@ terraform_statefile_bucket: CHANGEME
 # NOTE(craigbarber): This is temporary for staging testing
 # The GS bucket which contains the staging Terraform configs.
 terraform_staging_bucket: CHANGEME
-
-# NOTE(craigbarber): This is temporary for staging testing
-# The GCS URI pointing to the terraform staging docker image.
-terraform_staging_docker_uri: CHANGME

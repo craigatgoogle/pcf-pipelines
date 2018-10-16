@@ -30,12 +30,6 @@ resources:
     regexp: terraform.tgz
     unpack: true
 
-# NOTE(craigatgoogle): This is required to support the terraform staging binary.
-- name: staging-terraform-docker
-  type: docker-image
-  source:
-    repository: {{terraform_staging_docker_uri}}
-
 - name: terraform-state
   type: gcs
   source:
@@ -125,8 +119,6 @@ jobs:
         globs:
         - "*GCP.yml"
   - task: create-infrastructure
-    # NOTE(craigatgoogle): Staging TF binaries
-    image: staging-terraform-docker
     file: pcf-pipelines/install-pcf/gcp/tasks/create-infrastructure/task.yml
     params:
       GCP_PROJECT_ID: {{gcp_project_id}}
