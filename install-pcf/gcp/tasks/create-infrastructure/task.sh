@@ -28,14 +28,15 @@ export GOOGLE_REGION=${GCP_REGION}
 echo "\n!!!DEBUG!!!\n"
 tar xfz staging-terraform/terraform.tgz -C pcf-pipelines/install-pcf/gcp
 cp -r pcf-pipelines/install-pcf/gcp/terraform/.terraform.d $HOME/.terraform.d
-ls $HOME/.terraform.d
-echo "TF:"
-terraform providers
+ls $HOME/.terraform.d/plugins
 echo "\n!!!DEBUG!!!\n"
-exit 1
 
 # NOTE(craigatgoogle): Modified for staging, using the terraform-staging input instead
 terraform init pcf-pipelines/install-pcf/gcp/terraform
+
+echo "\n!!!TF:"
+terraform providers
+exit 1
 
 terraform plan \
   -var "gcp_proj_id=${GCP_PROJECT_ID}" \
