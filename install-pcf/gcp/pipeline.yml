@@ -27,7 +27,7 @@ resources:
   source:
     bucket: {{terraform_staging_bucket}}
     json_key: {{gcp_service_account_key}}
-    regexp: terraform.tgz
+    versioned_file: terraform.tgz
     unpack: true
 
 - name: terraform-state
