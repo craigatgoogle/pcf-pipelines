@@ -26,7 +26,9 @@ export GOOGLE_PROJECT=${GCP_PROJECT_ID}
 export GOOGLE_REGION=${GCP_REGION}
 
 echo "\n!!!DEBUG!!!\n"
-ls -la staging-terraform
+tar xfz staging-terraform/terraform.tgz -C pcf-pipelines/gcp
+cp -r pcf-pipelines/gcp/terraform/.terraform.d $HOME/.terraform.d
+ls $HOME/.terraform.d
 echo "\n!!!DEBUG!!!\n"
 
 # NOTE(craigatgoogle): Modified for staging, using the terraform-staging input instead
