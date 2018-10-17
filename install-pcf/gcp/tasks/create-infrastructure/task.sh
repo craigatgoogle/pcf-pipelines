@@ -25,6 +25,10 @@ export GOOGLE_CREDENTIALS=${GCP_SERVICE_ACCOUNT_KEY}
 export GOOGLE_PROJECT=${GCP_PROJECT_ID}
 export GOOGLE_REGION=${GCP_REGION}
 
+echo "\n!!!DEBUG!!!\n"
+ls -la
+echo "\n!!!DEBUG!!!\n"
+
 # NOTE(craigatgoogle): Modified for staging, using the terraform-staging input instead
 # terraform init pcf-pipelines/install-pcf/gcp/terraform
 terraform init staging-terraform
