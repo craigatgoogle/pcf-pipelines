@@ -26,14 +26,16 @@ export GOOGLE_PROJECT=${GCP_PROJECT_ID}
 export GOOGLE_REGION=${GCP_REGION}
 
 echo "\n!!!DEBUG!!!\n"
-tar xfz staging-terraform/terraform.tgz -C pcf-pipelines/gcp
-cp -r pcf-pipelines/gcp/terraform/.terraform.d $HOME/.terraform.d
+tar xfz staging-terraform/terraform.tgz -C pcf-pipelines/install-pcf/gcp
+cp -r pcf-pipelines/install-pcf/gcp/terraform/.terraform.d $HOME/.terraform.d
 ls $HOME/.terraform.d
+echo "TF:"
+terraform providers
 echo "\n!!!DEBUG!!!\n"
+exit 1
 
 # NOTE(craigatgoogle): Modified for staging, using the terraform-staging input instead
-# terraform init pcf-pipelines/install-pcf/gcp/terraform
-terraform init staging-terraform
+terraform init pcf-pipelines/install-pcf/gcp/terraform
 
 terraform plan \
   -var "gcp_proj_id=${GCP_PROJECT_ID}" \
@@ -76,9 +78,7 @@ terraform plan \
   -var "db_cloudsqldb_tier=${DB_CLOUDSQLDB_TIER}" \
   -out terraform.tfplan \
   -state terraform-state/terraform.tfstate \
-  staging-terraform
-# NOTE(craigatgoogle): Modified for staging, using the terraform-staging input instead
-# pcf-pipelines/install-pcf/gcp/terraform
+  pcf-pipelines/install-pcf/gcp/terraform
 
 terraform apply \
   -state-out $root/create-infrastructure-output/terraform.tfstate \
