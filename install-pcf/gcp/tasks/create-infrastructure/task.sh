@@ -26,7 +26,7 @@ export GOOGLE_PROJECT=${GCP_PROJECT_ID}
 export GOOGLE_REGION=${GCP_REGION}
 
 echo "\n!!!DEBUG!!!\n"
-ls -la staging_terraform
+ls -la staging-terraform
 echo "\n!!!DEBUG!!!\n"
 
 # NOTE(craigatgoogle): Modified for staging, using the terraform-staging input instead
