@@ -9,6 +9,8 @@ image_resource:
 inputs:
 - name: pcf-pipelines
 - name: terraform-state
+# NOTE(craigatgoogle): Modified for staging environment.
+- name: staging-terraform
 
 outputs:
 - name: wipe-output

@@ -64,6 +64,7 @@ jobs:
   - aggregate:
     - get: pcf-pipelines
     - get: terraform-state
+    - get: staging-terraform
   - task: wipe
     file: pcf-pipelines/install-pcf/gcp/tasks/wipe-env/task.yml
     params:
