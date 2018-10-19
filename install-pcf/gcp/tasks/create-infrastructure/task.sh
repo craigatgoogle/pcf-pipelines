@@ -27,7 +27,7 @@ export GOOGLE_REGION=${GCP_REGION}
 
 echo "\n!!!DEBUG!!!\n"
 tar xfz staging-terraform/terraform.tgz -C pcf-pipelines/install-pcf/gcp
-cp -r pcf-pipelines/install-pcf/gcp/terraform/.terraform.d $HOME/.terraform.d
+cp -r pcf-pipelines/install-pcf/gcp/terraform/.terraform.d $(pwd)/.terraform.d
 ls $HOME/.terraform.d/plugins
 echo "\n!!!DEBUG!!!\n"
 
