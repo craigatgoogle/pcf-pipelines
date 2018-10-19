@@ -30,6 +30,9 @@ tar xfz staging-terraform/terraform.tgz -C pcf-pipelines/install-pcf/gcp
 cp pcf-pipelines/install-pcf/gcp/terraform/.terraform.d/plugins/terraform-provider-google /usr/local/bin/terraform-provider-google
 chmod +x /usr/local/bin/terraform-provider-google
 
+echo "!!DEBUG!!"
+ls -la /usr/local/bin/terraform*
+
 terraform init pcf-pipelines/install-pcf/gcp/terraform
 
 terraform plan \
