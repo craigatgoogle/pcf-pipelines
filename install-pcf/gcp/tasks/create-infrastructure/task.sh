@@ -27,9 +27,8 @@ export GOOGLE_REGION=${GCP_REGION}
 
 # NOTE(craigatgoogle): Modified for staging, using the terraform-staging input instead of TF configs in repo.
 tar xfz staging-terraform/terraform.tgz -C pcf-pipelines/install-pcf/gcp
-cp -r pcf-pipelines/install-pcf/gcp/terraform/.terraform.d $(pwd)/terraform.d
-echo "!!DEBUG!!"
-ls -la $(pwd)/terraform.d/plugins
+cp pcf-pipelines/install-pcf/gcp/terraform/.terraform.d/plugins/terraform-provider-google /usr/local/bin/terraform-provider-google
+chmod +x /usr/local/bin/terraform-provider-google
 
 terraform init pcf-pipelines/install-pcf/gcp/terraform
 
