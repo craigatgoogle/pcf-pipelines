@@ -25,18 +25,11 @@ export GOOGLE_CREDENTIALS=${GCP_SERVICE_ACCOUNT_KEY}
 export GOOGLE_PROJECT=${GCP_PROJECT_ID}
 export GOOGLE_REGION=${GCP_REGION}
 
-echo "\n!!!DEBUG!!!\n"
+# NOTE(craigatgoogle): Modified for staging, using the terraform-staging input instead of TF configs in repo.
 tar xfz staging-terraform/terraform.tgz -C pcf-pipelines/install-pcf/gcp
-cp -r pcf-pipelines/install-pcf/gcp/terraform/.terraform.d $(pwd)/.terraform.d
-ls $(pwd)/.terraform.d/plugins
-echo "\n!!!DEBUG!!!\n"
+cp -r pcf-pipelines/install-pcf/gcp/terraform/.terraform.d $HOME/.terraform.d
 
-# NOTE(craigatgoogle): Modified for staging, using the terraform-staging input instead
 terraform init pcf-pipelines/install-pcf/gcp/terraform
-
-echo "\n!!!TF:"
-#terraform providers
-#exit 1
 
 terraform plan \
   -var "gcp_proj_id=${GCP_PROJECT_ID}" \
