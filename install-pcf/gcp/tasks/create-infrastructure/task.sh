@@ -35,8 +35,8 @@ echo "\n!!!DEBUG!!!\n"
 terraform init pcf-pipelines/install-pcf/gcp/terraform
 
 echo "\n!!!TF:"
-terraform providers
-exit 1
+#terraform providers
+#exit 1
 
 terraform plan \
   -var "gcp_proj_id=${GCP_PROJECT_ID}" \
